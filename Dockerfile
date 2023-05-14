@@ -1,5 +1,9 @@
 FROM ubuntu:22.04
 
+# Set metadata
+LABEL version="1.0.0"
+LABEL maintainer="Maciek Bak"
+
 # Set the non-root user
 ARG USERNAME=angryuser
 ARG USER_UID=1000

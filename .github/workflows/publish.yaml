@@ -1,0 +1,32 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+
+  publish:
+    name: DockerHub
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t angrymaciek/angry-runner:latest .
+
+      - name: Publish image to DockerHub
+        env:
+          docker_username: ${{ secrets.DOCKER_USERNAME }}
+          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          repo_name="angry-runner"
+          tag=$(grep -E 'version=".+"' Dockerfile | grep -oE '[0-9.]+')
+          echo $docker_password | docker login -u $docker_username --password-stdin
+          docker tag angrymaciek/${repo_name} angrymaciek/${repo_name}:${tag}
+          docker push angrymaciek/${repo_name}:latest
+          docker push angrymaciek/${repo_name}:${tag}
+...
