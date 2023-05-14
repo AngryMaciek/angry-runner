@@ -4,6 +4,10 @@ FROM ubuntu:22.04
 LABEL version="1.0.0"
 LABEL maintainer="Maciek Bak"
 
+# Set enviro vars
+ENV LANG C.UTF-8
+ENV SHELL /bin/bash
+
 # Set the non-root user
 ARG USERNAME=angryuser
 ARG USER_UID=1000
@@ -23,6 +27,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 # Switch to the non-root user
 USER $USERNAME
+
+# Set the workdir
+WORKDIR /home/angryuser
 
 # Start the container
 CMD ["/bin/bash"]
