@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # Set metadata
-LABEL version="1.0.2"
+LABEL version="1.0.4"
 LABEL maintainer="Maciek Bak"
 
 # Set enviro vars
