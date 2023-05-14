@@ -26,7 +26,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && rm -rf /var/lib/apt/lists/*
 
 # Switch to the non-root user
-USER $USERNAME
+# USER $USERNAME
 
 # Set the workdir
 WORKDIR /home/angryuser
