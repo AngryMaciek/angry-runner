@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # Set metadata
-LABEL version="1.0.5"
+LABEL version="1.0.6"
 LABEL maintainer="Maciek Bak"
 
 # Set enviro vars
@@ -31,14 +31,14 @@ USER $USERNAME
 # Set the workdir
 WORKDIR /home/angryuser
 
-# Install Mambaforge
+# Install Mambaforge, configure it
 RUN /bin/bash -c "wget https://github.com/conda-forge/miniforge/releases/download/23.1.0-1/Mambaforge-23.1.0-1-Linux-x86_64.sh && \
     bash Mambaforge-23.1.0-1-Linux-x86_64.sh -b -p /home/angryuser/mambaforge && \
-    rm -f Mambaforge-23.1.0-1-Linux-x86_64.sh"
-    
-# Set conda configuration & install conda-build and boa packages
-#RUN /bin/bash -c "conda config --system --set channel_priority strict && \
-#    conda env list"
+    rm -f Mambaforge-23.1.0-1-Linux-x86_64.sh && \
+    source mambaforge/etc/profile.d/conda.sh && \
+    conda init && \
+    source .bashrc && \
+    conda config --system --set channel_priority strict"
     
 # Start the container
 CMD ["/bin/bash"]
