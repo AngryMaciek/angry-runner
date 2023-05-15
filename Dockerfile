@@ -26,10 +26,16 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Switch to the non-root user
-# USER $USERNAME
+USER $USERNAME
 
 # Set the workdir
 WORKDIR /home/angryuser
 
+RUN /bin/bash -c "curl -L https://github.com/conda-forge/miniforge/releases/download/23.1.0-1/Mambaforge-23.1.0-1-Linux-x86_64.sh > mambaforge.sh && \
+    bash mambaforge.sh -b -p /home/angryuser/mambaforge && \
+    conda config --system --set channel_priority strict && \
+    rm -f mambaforge.sh && \
+    conda clean --all --yes"
+    
 # Start the container
 CMD ["/bin/bash"]
