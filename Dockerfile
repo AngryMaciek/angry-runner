@@ -34,8 +34,11 @@ WORKDIR /home/angryuser
 # Install Mambaforge
 RUN /bin/bash -c "wget https://github.com/conda-forge/miniforge/releases/download/23.1.0-1/Mambaforge-23.1.0-1-Linux-x86_64.sh && \
     bash Mambaforge-23.1.0-1-Linux-x86_64.sh -b -p /home/angryuser/mambaforge && \
-    conda config --system --set channel_priority strict && \
-    rm -f mambaforge.sh"
+    rm -f Mambaforge-23.1.0-1-Linux-x86_64.sh"
+    
+# Set conda configuration & install conda-build and boa packages
+RUN /bin/bash -c "conda config --system --set channel_priority strict && \
+    conda env list"
     
 # Start the container
 CMD ["/bin/bash"]
