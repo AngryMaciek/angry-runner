@@ -31,11 +31,11 @@ USER $USERNAME
 # Set the workdir
 WORKDIR /home/angryuser
 
-RUN /bin/bash -c "curl -L https://github.com/conda-forge/miniforge/releases/download/23.1.0-1/Mambaforge-23.1.0-1-Linux-x86_64.sh > mambaforge.sh && \
-    bash mambaforge.sh -b -p /home/angryuser/mambaforge && \
+# Install Mambaforge
+RUN /bin/bash -c "wget https://github.com/conda-forge/miniforge/releases/download/23.1.0-1/Mambaforge-23.1.0-1-Linux-x86_64.sh && \
+    bash Mambaforge-23.1.0-1-Linux-x86_64.sh -b -p /home/angryuser/mambaforge && \
     conda config --system --set channel_priority strict && \
-    rm -f mambaforge.sh && \
-    conda clean --all --yes"
+    rm -f mambaforge.sh"
     
 # Start the container
 CMD ["/bin/bash"]
