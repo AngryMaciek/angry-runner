@@ -1,5 +1,6 @@
 ![build](https://github.com/AngryMaciek/angry-runner/actions/workflows/build.yaml/badge.svg)
 [![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/angrymaciek/angry-runner)
+[![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/angry-runner/badge)](https://www.codefactor.io/repository/github/angrymaciek/angry-runner)
 
 # Angry Runner (😠🏃‍♂️)
 

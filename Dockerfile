@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y curl git gnupg2 gosu wget \
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ##### INSTALL MAMBAFORGE & PKGS #####
 RUN /bin/bash -c "curl -L ${MAMBAURL} > mambaforge.sh \
