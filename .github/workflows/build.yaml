@@ -20,12 +20,12 @@ jobs:
 
       - name: Run commands in container as root
         run: |
-          docker run --name angry-runner -e HOSTUID=`id -u $USER` angry-runner:latest id
+          docker run --name angry-runner -e HOSTUID=`id -u $USER` angrymaciek/angry-runner:latest id
           docker rm angry-runner
 
       - name: Run commands in container as angryuser
         run: |
-          docker run --name angry-runner -e HOSTUID=`id -u $USER` angry-runner:latest gosu angryuser id
+          docker run --name angry-runner -e HOSTUID=`id -u $USER` angrymaciek/angry-runner:latest gosu angryuser id
           docker rm angry-runner
 
 ...
