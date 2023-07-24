@@ -1,28 +1,45 @@
+##### BASE IMAGE #####
 FROM ubuntu:22.04
 
-# Set metadata
-LABEL version="1.0.0"
+##### METADATA #####
+LABEL base.image="ubuntu:22.04"
+LABEL version="1.1.0"
 LABEL maintainer="Maciek Bak"
 
-# Set the non-root user
-ARG USERNAME=angryuser
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-ENV DEBIAN_FRONTEND=noninteractive
+##### DEFINE BUILD/ENV VARIABLES #####
+ARG MAMBADIR="/mambaforge"
+ARG MAMBAURL="https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh"
+ENV LANG C.UTF-8
 
-# Create the user and group with the specified UID and GID
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && apt-get update \
-    && apt-get install -y sudo git wget \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
+##### INSTALL SYSTEM-LEVEL DEPENDENCIES #####
+RUN apt-get update \
+    && apt-get install -y curl git gnupg2 gosu wget \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# Switch to the non-root user
-USER $USERNAME
+##### INSTALL MAMBAFORGE & PKGS #####
+RUN /bin/bash -c "curl -L ${MAMBAURL} > mambaforge.sh \
+    && bash mambaforge.sh -b -p ${MAMBADIR} \
+    && ${MAMBADIR}/bin/conda config --system --set channel_priority strict \
+    && source ${MAMBADIR}/bin/activate \
+    && conda init bash \
+    && mamba install boa conda-build conda-verify -c conda-forge --yes \
+    && conda clean --all --yes \
+    && rm -f mambaforge.sh"
 
-# Start the container
+##### EXPOSE PORTS #####
+EXPOSE 8888
+
+##### PREPARE WORKING DIRECTORY #####
+VOLUME /workdir
+WORKDIR /workdir
+
+##### SETUP ENTRYPOINT W/ NONROOT USER #####
+COPY entrypoint.sh /bin/entrypoint.sh
+RUN /bin/bash -c "chmod +x /bin/entrypoint.sh \
+  && groupadd conda \
+  && chgrp -R conda ${MAMBADIR} \
+  && chmod 770 -R ${MAMBADIR}"
+ENTRYPOINT ["/bin/entrypoint.sh"]
 CMD ["/bin/bash"]

@@ -5,4 +5,6 @@
 
 Delicious recipe for a Docker image suitable for self-hosted GitHub Actions runners.
 
-_Enjoy!_
+Enjoy!
+
+_~AngryMaciek_
