@@ -13,7 +13,7 @@ ENV LANG C.UTF-8
 
 ##### INSTALL SYSTEM-LEVEL DEPENDENCIES #####
 RUN apt-get update \
-    && apt-get install --no-install-recommends --yes curl git gnupg2 gosu wget \
+    && apt-get install --no-install-recommends --yes ca-certificates curl git gnupg2 gosu wget \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
