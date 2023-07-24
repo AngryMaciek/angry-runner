@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 ##### METADATA #####
 LABEL base.image="ubuntu:22.04"
-LABEL version="1.1.0"
+LABEL version="1.1.1"
 LABEL maintainer="Maciek Bak"
 
 ##### DEFINE BUILD/ENV VARIABLES #####
@@ -13,7 +13,7 @@ ENV LANG C.UTF-8
 
 ##### INSTALL SYSTEM-LEVEL DEPENDENCIES #####
 RUN apt-get update \
-    && apt-get install -y curl git gnupg2 gosu wget \
+    && apt-get install --no-install-recommends --yes curl git gnupg2 gosu wget \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
