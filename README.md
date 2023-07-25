@@ -42,7 +42,7 @@ docker pull angrymaciek/angry-runner:latest
 Run the container with:
 
 ```bash
-docker run --name angry-runner -e HOSTUID=`id -u $USER` -p 8888:8888 -it -v $HOME:/workdir angry-runner:latest
+docker run --name angry-runner -e HOSTUID=`id -u $USER` -p 8888:8888 -it -v $HOME:/workdir angrymaciek/angry-runner:latest
 ```
 
 In the example above my whole home directory is mounted as the volume.  
