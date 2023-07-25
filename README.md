@@ -21,6 +21,34 @@ Useful references:
 * https://askubuntu.com/questions/1457726/how-and-where-to-install-conda-to-be-accessible-to-all-users
 * https://www.fromlatest.io
 
+### Actions runner
+
+In order to execute your CI job on a self-hosted runner in a Docker container please specify:
+
+```yaml
+  job:
+
+    runs-on: "self-hosted"
+    container:
+      image: angrymaciek/angry-runner:latest
+      options: --rm=true # cleanup
+    defaults:
+      run:
+        shell: bash # recognise source
+
+    steps:
+
+      # Commands from the ci steps are executed in a non-interactive non-login shell;
+      # conda is not initialised there thus every job step with a 'run' directive
+      # needs to start with loading conda.
+      # PS. base env is not activated automatically
+      - name: info
+        run: |
+          source /mambaforge/etc/profile.d/conda.sh
+          conda activate base
+          conda info -a
+```
+
 ### Local development
 
 (Provided you have a Docker engine installed and set up)
