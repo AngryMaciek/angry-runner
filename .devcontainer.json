@@ -6,12 +6,14 @@
         "dockerfile": "./Dockerfile"
     },
 
-    "postCreateCommand": "bash /bin/entrypoint.sh",
+    "postCreateCommand": "bash /bin/entrypoint.sh bash",
 
     "customizations": {
         "codespaces": {
             "openFiles": []
         }
-    }
+    },
+
+    "remoteUser": "angryuser"
 
 }
