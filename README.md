@@ -5,7 +5,7 @@
 
 # Angry Runner (😠🏃‍♂️)
 
-Delicious recipe for a Docker image suitable for self-hosted GitHub Actions runners as well as local dev.
+Delicious recipe for a Docker image suitable for: (1) self-hosted GitHub Actions runners, (2) local development environment as well as (3) GitHub codespaces base for devcontainer mechanism.
 
 Enjoy!
 
