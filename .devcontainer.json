@@ -6,7 +6,7 @@
         "dockerfile": "./Dockerfile"
     },
 
-    "postCreateCommand": "bash /bin/entrypoint.sh bash",
+
 
     "customizations": {
         "codespaces": {
