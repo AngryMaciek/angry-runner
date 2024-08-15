@@ -33,8 +33,8 @@ RUN /bin/bash -c "curl -L ${MAMBAURL} > mambaforge.sh \
 EXPOSE 8888
 
 ##### PREPARE WORKING DIRECTORY #####
-VOLUME /workdir
-WORKDIR /workdir
+VOLUME /workspace
+WORKDIR /workspace
 
 ##### SETUP ENTRYPOINT W/ NONROOT USER #####
 COPY entrypoint.sh /bin/entrypoint.sh
