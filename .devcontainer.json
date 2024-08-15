@@ -6,7 +6,7 @@
         "dockerfile": "./Dockerfile"
     },
 
-
+    "postCreateCommand": "bash /bin/entrypoint.sh gosu angryuser bash",
 
     "customizations": {
         "codespaces": {
