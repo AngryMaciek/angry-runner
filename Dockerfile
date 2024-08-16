@@ -4,8 +4,6 @@
 #-------------------------------------------------------------------------------------------------------------
 
   FROM ubuntu:focal
-
-  COPY first-run-notice.txt /tmp/scripts/
   
   RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       # Restore man command
