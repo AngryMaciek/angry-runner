@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/base:debian-12
+FROM ubuntu:22.04
