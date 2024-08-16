@@ -4,8 +4,5 @@
 		"context": "."
 	},
 
-	"capAdd": ["SYS_PTRACE"],
-	"securityOpt": ["seccomp=unconfined"],
-
 	"remoteUser": "vscode"
 }
