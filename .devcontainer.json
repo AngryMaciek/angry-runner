@@ -1,13 +1,10 @@
+//devcontainer.json
 {
 
-    "name": "dev",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
 
-    "image": "ubuntu:22.04",
+  "postCreateCommand": "yarn install"
 
-    "customizations": {
-        "codespaces": {
-            "openFiles": []
-        }
-    }
-
+  // "remoteUser": "root"
 }
