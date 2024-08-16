@@ -1,0 +1,15 @@
+{
+  "name": "dev",
+
+  "build": {
+    "dockerfile": "./Dockerfile"
+  },
+
+  "postCreateCommand": "bash /bin/entrypoint.sh",
+
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    }
+  }
+}
