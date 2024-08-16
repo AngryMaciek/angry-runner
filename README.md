@@ -77,3 +77,15 @@ In the example above my whole home directory is mounted as the volume.
 This may, of course, be adjusted.
 
 ### Codespaces (devcontainer)
+
+The following repository is configured to push each new version of the image
+to my DockerHub. Feel free to use it as a base for your development
+container through the `devcontainer` mechanism; include these lines in your JSON:
+
+```json
+  "image": "angrymaciek/angry-runner:latest",
+  "postCreateCommand": "bash /bin/entrypoint.sh",
+```
+
+By default the container starts as root, though one may swiftly change
+to the developer shell with: `gosu angryuser bash`.
