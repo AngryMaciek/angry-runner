@@ -2,11 +2,7 @@
 
     "name": "dev",
 
-    "build": {
-        "dockerfile": "./Dockerfile"
-    },
-
-    "postCreateCommand": "bash /bin/entrypoint.sh gosu angryuser bash",
+    "image": "ubuntu:22.04",
 
     "customizations": {
         "codespaces": {
