@@ -1,4 +1,13 @@
 {
-  "image": "angrymaciek/angry-runner",
-  "postCreateCommand": "bash /bin/entrypoint.sh"
+  "name": "dev",
+
+  "build": {
+    "dockerfile": "./Dockerfile"
+  },
+
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    }
+  }
 }
