@@ -1,3 +1,4 @@
 {
-  "image": "angrymaciek/angry-runner"
+  "image": "angrymaciek/angry-runner",
+  "postCreateCommand": "bash /bin/entrypoint.sh"
 }
