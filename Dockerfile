@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 ##### METADATA #####
 LABEL base.image="ubuntu:22.04"
-LABEL version="1.1.2"
+LABEL version="1.2.0"
 LABEL maintainer="Maciek Bak"
 
 ##### DEFINE BUILD/ENV VARIABLES #####
