@@ -1,6 +1,3 @@
 {
-	"build": {
-		"dockerfile": "./Dockerfile",
-		"context": "."
-	}
+  "image": "angrymaciek/angry-runner"
 }
