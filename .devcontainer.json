@@ -3,8 +3,6 @@
         "dockerfile": "./Dockerfile",
         "context": "."
     },
-    "remoteUser": "codespace",
-    "containerUser": "codespace",
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
