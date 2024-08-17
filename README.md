@@ -88,4 +88,6 @@ container through the `devcontainer` mechanism; include these lines in your JSON
 ```
 
 By default the container starts as root, though one may swiftly change
-to the developer shell with: `gosu angryuser bash`.
+to the developer shell with: `gosu angryuser bash`. Watch out! Depending on the container set up tool
+it may turn out that the cloned repository does not have write permission set for _others_ (as root is the owner).
+In such case one needs to run `chmod 777 -R .` before switching users.
