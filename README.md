@@ -76,8 +76,7 @@ docker run --name angry-runner -e HOSTUID=`id -u $USER` -p 8888:8888 -it -v $HOM
 Recall that all data generated inside the container (with the exception of the mounted volume) are **not** persistent.  
 If you'd like your data don't perish into oblivion after you stop the container
 check out [Docker documentation on storage mechanisms](https://docs.docker.com/storage/).
-
-In the example above my whole home directory is mounted as the volume.  
+In the example above my whole home directory is mounted as the volume.
 This may, of course, be adjusted.
 
 Watch out! Due to Docker's specifics commands above need to be executed as `root` user;
