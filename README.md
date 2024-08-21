@@ -76,6 +76,13 @@ docker run --name angry-runner -e HOSTUID=`id -u $USER` -p 8888:8888 -it -v $HOM
 In the example above my whole home directory is mounted as the volume.  
 This may, of course, be adjusted.
 
+Watch out! Due to Docker's specifics they need to be executed as `root` user;
+[alternatively, see here](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+Recall that all data generated inside the container (with the exception of the mounted volume) are **not** persistent.  
+If you'd like your data don't perish into oblivion after you stop the container
+check out [Docker documentation on storage mechanisms](https://docs.docker.com/storage/).
+
 ### Codespaces (devcontainer)
 
 The following repository is configured to push each new version of the image
