@@ -1,14 +1,14 @@
 ##### BASE IMAGE #####
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ##### METADATA #####
-LABEL base.image="ubuntu:22.04"
-LABEL version="1.2.0"
+LABEL base.image="ubuntu:24.04"
+LABEL version="1.3.0"
 LABEL maintainer="Maciek Bak"
 
 ##### DEFINE BUILD/ENV VARIABLES #####
 ARG MAMBADIR="/mambaforge"
-ARG MAMBAURL="https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh"
+ARG MAMBAURL="https://github.com/conda-forge/miniforge/releases/download/24.3.0-0/Mambaforge-24.3.0-0-Linux-x86_64.sh"
 ENV LANG C.UTF-8
 
 ##### INSTALL SYSTEM-LEVEL DEPENDENCIES #####
