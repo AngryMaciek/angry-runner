@@ -14,7 +14,7 @@ _~AngryMaciek_
 
 ### Brief description
 
-The base image here is the popular `ubuntu:24:04` - that is to increase the similarity of the container system to users OSs; A few system tools come pre-installed: [GNU Bash](https://www.gnu.org/software/bash/), [gcc & g++](https://gcc.gnu.org/), [Git](https://git-scm.com/), [GNU Make](https://www.gnu.org/software/make/), [CMake](https://cmake.org/), [Vim](https://www.vim.org/) and most importantly - [mambaforge](https://github.com/conda-forge/miniforge), which has been set up for the (default) root user; port `8888` is exposed to the host machine; dir `/workspace` is available to mount a volume; an entrypoint script has been designed to add a new non-root linux user which can access conda via a system's group; executing commands as `angryuser` is available through [gosu](https://github.com/tianon/gosu).
+The base image here is the popular `ubuntu:24:04` - that is to increase the similarity of the container system to users OSs; A few system tools come pre-installed: [GNU Bash](https://www.gnu.org/software/bash/), [Z shell](https://en.wikipedia.org/wiki/Z_shell), [gcc & g++](https://gcc.gnu.org/), [Git](https://git-scm.com/), [GNU Make](https://www.gnu.org/software/make/), [CMake](https://cmake.org/), [Vim](https://www.vim.org/) and most importantly - [mambaforge](https://github.com/conda-forge/miniforge), which has been set up for the (default) root user; port `8888` is exposed to the host machine; dir `/workspace` is available to mount a volume; an entrypoint script has been designed to add a new non-root linux user which can access conda via a system group; executing commands as `angryuser` is available through [gosu](https://github.com/tianon/gosu).
 
 Useful references:
 * https://denibertovic.com/posts/handling-permissions-with-docker-volumes/
@@ -94,6 +94,6 @@ container through the `devcontainer` mechanism; include these lines in your JSON
 ```
 
 By default the container starts as root, though one may swiftly change
-to the developer shell with: `gosu angryuser bash`. Watch out! Depending on the container set up tool
+to the developer shell with: `gosu angryuser zsh`. Watch out! Depending on the container set up tool
 it may turn out that the cloned repository does not have write permission set for _others_ (as root is the owner).
 In such case one needs to run `chmod 777 -R .` before switching users.
